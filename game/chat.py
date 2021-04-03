@@ -19,13 +19,15 @@ class SampleApp(tk.Tk):
             self._frame.destroy()
         self._frame = new_frame
         self._frame.pack()
-
+   
     def milk_clicked(self):
         self.milk = tk.PhotoImage(file="C://Users//김민서//OneDrive - 한국외국어대학교//바탕 화면//d//game//milk.png").subsample(5)
-        tk.Button(self, image=self.milk,borderwidth=0).place(x=60,y=10)
+        self.milk_Button=tk.Button(self, image=self.milk,activebackground="red").place(x=60,y=10)
+        
     def danso_clicked(self):
         self.danso = tk.PhotoImage(file="C://Users//김민서//OneDrive - 한국외국어대학교//바탕 화면//d//game//danso.png").subsample(5)
-        tk.Button(self, image=self.danso,borderwidth=0).place(x=220,y=10)
+        self.danso_Button=tk.Button(self, image=self.danso,activebackground="red").place(x=220,y=10)
+        
 global list 
 list = [0,0]
 class FirstPage(tk.Frame):
