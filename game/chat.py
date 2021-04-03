@@ -5,7 +5,7 @@ try:
     import Tkinter as tk
 except:
     import tkinter as tk
-    
+pygame.init()
 class SampleApp(tk.Tk):
     def __init__(self):
         tk.Tk.__init__(self)
@@ -54,9 +54,9 @@ class MainPage(tk.Frame):
         tk.Button(self, text="뭘봐 씻팔",
                   command=lambda: master.switch_frame(danso_nam),borderwidth=0).place(x=400,y=360)
         tk.Button(self, text="사랑~해요~",
-                  command=lambda: master.switch_frame(ddung)).place(x=670,y= 430)
+                  command=lambda: master.switch_frame(ddung)).place(x=520,y= 250)
         danso = tk.Button(self, text="(누군가의 무기인거같은데..)",command=lambda: self.danso_clicked(),fg="blue").place(x=800,y=700)
-        milk = tk.Button(self, text="알랍우유",command=lambda: self.milk_clicked(),fg="blue").place(x=810,y=150)
+        milk = tk.Button(self, text="알랍우유",command=lambda: self.milk_clicked(),fg="blue").place(x=850,y=150)
         
         #milk.config(command=milk_clicked)
         tk.Button(self, text="무한~",
@@ -92,11 +92,13 @@ class MainPage(tk.Frame):
 class joon(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
-        self.joon = tk.PhotoImage(file="C://Users//김민서//OneDrive - 한국외국어대학교//바탕 화면//d//kiss.png").subsample(10)
+        self.joon = tk.PhotoImage(file="C://Users//김민서//OneDrive - 한국외국어대학교//바탕 화면//d//kiss.png").subsample(5)
         tk.Label(self, image = self.joon).grid()
-        tk.Label(self, text="어?예쁘다", font=('Helvetica', 18, "bold")).grid()
+        tk.Label(self, text="어?예쁘다", font=('Helvetica', 18, "bold")).place(x=80,y=400)
         tk.Button(self, text="(메인화면으로)뭔가 알럽우유 드립칠거같이 생겼다",
                   command=lambda: master.switch_frame(MainPage)).grid()
+        pygame.mixer.music.load('최준키스.wav')
+        pygame.mixer.music.play()
 class danso_nam(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
@@ -105,6 +107,8 @@ class danso_nam(tk.Frame):
         tk.Label(self, text="후얼유!", font=('Helvetica', 18, "bold")).grid()
         tk.Button(self, text="(메인화면으로)왜 화가 났지...손이 허전해보이긴한다",
                   command=lambda: master.switch_frame(MainPage)).grid()
+        pygame.mixer.music.load('후얼유.wav')
+        pygame.mixer.music.play()
 class ddung(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
@@ -113,6 +117,28 @@ class ddung(tk.Frame):
         tk.Label(self, text="저는 뚱인데여?", font=('Helvetica', 18, "bold")).grid()
         tk.Button(self, text="(메인화면으로)아무 쓸모가 없어보인다",
                   command=lambda: master.switch_frame(MainPage)).grid() 
+        
+        pygame.mixer.music.load('뚱.wav')
+        pygame.mixer.music.play()
+        
+class muya(tk.Frame):
+
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        #my_img = ImageTk.PhotoImage(Image.open("background.jpg"))
+        #tk.Frame.configure(self,bg=my_img)
+        self.ddung = tk.PhotoImage(file="C://Users//김민서//OneDrive - 한국외국어대학교//바탕 화면//d//muyaho.png").subsample(5)
+        tk.Label(self, image = self.ddung).grid()
+        #pygame.mixer.music.load("C://Users//김민서//Downloads//Carl Storm - Warm.wav") #음악 재생 (무야호~). 음악 파일없어서 주석처리
+        #pygame.mixer.music.play()
+        #music = r'C://Users//김민서//OneDrive - 한국외국어대학교//바탕 화면//d//무야호.wav'
+        
+        pygame.mixer.music.load('무야호.wav')
+        pygame.mixer.music.play(3)
+        tk.Button(self, text="(메인화면으로)그만큼 신나시는구나..",
+                  command=lambda: master.switch_frame(MainPage) and pygame.mixer.music.stop()).grid()
+        
+
 class answer(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
@@ -130,16 +156,7 @@ class map(tk.Frame):
         tk.Button(self, text="메인화면으로",
                   command=lambda: master.switch_frame(MainPage)).grid()
    
-class muya(tk.Frame):
-    def __init__(self, master):
-        tk.Frame.__init__(self, master)
-        #my_img = ImageTk.PhotoImage(Image.open("background.jpg"))
-        #tk.Frame.configure(self,bg=my_img)
-        tk.Label(self, text="무야호", font=('Helvetica', 18, "bold")).pack(side="top", fill="x", pady=5)
-        pygame.mixer.music.load("C://Users//김민서//Downloads//Carl Storm - Warm.wav") #음악 재생 (무야호~). 음악 파일없어서 주석처리
-        pygame.mixer.music.play()
-        tk.Button(self, text="메인화면으로",
-                  command=lambda: master.switch_frame(MainPage)).grid()
+
 class leg(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
