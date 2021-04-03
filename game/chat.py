@@ -6,6 +6,7 @@ try:
 except:
     import tkinter as tk
 pygame.init()
+
 class SampleApp(tk.Tk):
     def __init__(self):
         tk.Tk.__init__(self)
@@ -18,9 +19,15 @@ class SampleApp(tk.Tk):
             self._frame.destroy()
         self._frame = new_frame
         self._frame.pack()
-    
-global list
-list = []
+
+    def milk_clicked(self):
+        self.milk = tk.PhotoImage(file="C://Users//김민서//OneDrive - 한국외국어대학교//바탕 화면//d//game//milk.png").subsample(5)
+        tk.Button(self, image=self.milk,borderwidth=0).place(x=60,y=10)
+    def danso_clicked(self):
+        self.danso = tk.PhotoImage(file="C://Users//김민서//OneDrive - 한국외국어대학교//바탕 화면//d//game//danso.png").subsample(5)
+        tk.Button(self, image=self.danso,borderwidth=0).place(x=220,y=10)
+global list 
+list = [0,0]
 class FirstPage(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
@@ -29,7 +36,6 @@ class FirstPage(tk.Frame):
         self.button=tk.PhotoImage(file="C://Users//김민서//OneDrive - 한국외국어대학교//바탕 화면//d//game//Start_button.png").subsample(1)
         tk.Button(self, image=self.button,
                   command=lambda: master.switch_frame(MainPage)).place(x=500,y=600)
-    
         
 class MainPage(tk.Frame):
     def __init__(self, master):
@@ -44,7 +50,7 @@ class MainPage(tk.Frame):
         #self.background_label.place(x=0,y=0,relwidth=1, relheight=1)
         #tk.Label(self, text="Start page", font=('Helvetica', 18, "bold")).pack(side="top", fill="x", pady=5)
         #self.joon = tk.PhotoImage(file="C://Users//김민서//OneDrive - 한국외국어대학교//바탕 화면//d//game//최준.png").subsample(5)
-        #self.danso = tk.PhotoImage(file="C://Users//김민서//OneDrive - 한국외국어대학교//바탕 화면//d//game//danso.png").subsample(5)
+        
         #self.milk = tk.PhotoImage(file="C://Users//김민서//OneDrive - 한국외국어대학교//바탕 화면//d//game//milk.png").subsample(10)
         #self.danso_nam = tk.PhotoImage(file="C://Users//김민서//OneDrive - 한국외국어대학교//바탕 화면//d//danso.png").subsample(10)
         #self.ddung = tk.PhotoImage(file="C://Users//김민서//OneDrive - 한국외국어대학교//바탕 화면//d//game//ddung.png").subsample(25)
@@ -55,33 +61,25 @@ class MainPage(tk.Frame):
                   command=lambda: master.switch_frame(danso_nam),borderwidth=0).place(x=400,y=360)
         tk.Button(self, text="사랑~해요~",
                   command=lambda: master.switch_frame(ddung)).place(x=520,y= 250)
-        danso = tk.Button(self, text="(누군가의 무기인거같은데..)",command=lambda: self.danso_clicked(),fg="blue").place(x=800,y=700)
-        milk = tk.Button(self, text="알랍우유",command=lambda: self.milk_clicked(),fg="blue").place(x=850,y=150)
+        self.danso = tk.Button(self, width = 8,height=1,command=lambda: master.danso_clicked(),bg="#B59757",borderwidth=0).place(x=920,y=450)
+        self.milk = tk.Button(self, text="알랍우유",command=lambda: master.milk_clicked(),fg="blue").place(x=850,y=150)
         
         #milk.config(command=milk_clicked)
         tk.Button(self, text="무한~",
                   command=lambda: master.switch_frame(muya)).place(x=1200,y=360)
-        tk.Button(self, text="쫙벌남",
-                  command=lambda: master.switch_frame(leg)).grid()
-        tk.Button(self, text="정답",
-                  command=lambda: master.switch_frame(answer)).grid()
-        tk.Button(self, text="지도",
-                  command=lambda: master.switch_frame(map)).grid()
+        #tk.Button(self, text="쫙벌남",
+                  #command=lambda: master.switch_frame(leg)).grid()
+        #tk.Button(self, text="정답",
+                  #command=lambda: master.switch_frame(answer)).grid()
+        #tk.Button(self, text="지도",
+                  #command=lambda: master.switch_frame(map)).grid()
+        
+    
+               
         
         
     
-    def milk_clicked(self): #우유가 리스트에 없으면 리스트에 추가하고 리스트에 있는 상태면 최준이나 무야호 아저씨한테 주는 함수(give) 호출
-        if 'milk' in list:
-            self.milk_give()
-        else: 
-            list.append('milk')
-            self.milk.configure(bg="yellow")
-    def danso_clicked(self):
-        if 'danso' in list:
-            self.danso_give()
-        else: 
-            list.append('danso')
-            self.danso.configure(bg="yellow")
+    
     '''def milk_give(self):
         joon.config(command=lambda:self.joon_give)
         muya.config(command=lambda:self.muya_give)
@@ -166,6 +164,7 @@ class leg(tk.Frame):
                   command=lambda: master.switch_frame(MainPage)).grid()
 
 
+   
 if __name__ == "__main__":
     app = SampleApp()
     app.mainloop()
