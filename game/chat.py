@@ -127,15 +127,15 @@ class muya(tk.Frame):
         tk.Frame.__init__(self, master)
         #my_img = ImageTk.PhotoImage(Image.open("background.jpg"))
         #tk.Frame.configure(self,bg=my_img)
-        self.ddung = tk.PhotoImage(file="C://Users//김민서//OneDrive - 한국외국어대학교//바탕 화면//d//muyaho.png").subsample(5)
-        tk.Label(self, image = self.ddung).grid()
+        self.muya = tk.PhotoImage(file="C://Users//김민서//OneDrive - 한국외국어대학교//바탕 화면//d//muya...png").subsample(5)
+        tk.Label(self,text="무한도전 저희가 많이보죠..", image = self.muya).grid()
         #pygame.mixer.music.load("C://Users//김민서//Downloads//Carl Storm - Warm.wav") #음악 재생 (무야호~). 음악 파일없어서 주석처리
         #pygame.mixer.music.play()
         #music = r'C://Users//김민서//OneDrive - 한국외국어대학교//바탕 화면//d//무야호.wav'
         
-        pygame.mixer.music.load('무야호.wav')
-        pygame.mixer.music.play(3)
-        tk.Button(self, text="(메인화면으로)그만큼 신나시는구나..",
+        #pygame.mixer.music.load('무야호.wav')
+        #pygame.mixer.music.play(3)
+        tk.Button(self, text="(메인화면으로)왜 신나보이시지 않을까?",
                   command=lambda: master.switch_frame(MainPage) and pygame.mixer.music.stop()).grid()
         
 
