@@ -161,9 +161,16 @@ class leg(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
         
-        tk.Label(self, text="게임을 하면 단소를 주겠다", font=('Helvetica', 18, "bold")).pack(side="top", fill="x", pady=5)
+        tk.Label(self, text="게임을 하면 단소를 주겠다", font=('Helvetica', 18, "bold")).grid()
+        tk.Button(self, text="뭐 까짓거 해보자",
+                  command=lambda: master.switch_frame(Leg_game)).grid()
         tk.Button(self, text="메인화면으로",
                   command=lambda: master.switch_frame(MainPage)).grid()
+class Leg_game(tk.Frame):
+    def __init__
+        
+   
+
 
 
    
